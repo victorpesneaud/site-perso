@@ -31,11 +31,11 @@ const experiences = [
     company: "Molotov (Puis Fubo TV)",
     yearStarted: '2021 - 2022',
     imgSrc: process.env.PUBLIC_URL + '/logo-molotov.png',
-    jobTitle: "Développeur de solutions informatiques pour le Plateau commun de Paris Nord",
+    jobTitle: "Développeur Front-End ReactJS",
     description: " Travail en méthode agile au sein de la squad B2C de l’entreprise en utilisant principalement React et Redux",
     task : {
-      task1 : 'Réalisation de pages sur le site landing',
-      task2 : 'Création de composant React',
+      task1 : 'Réalisation de pages sur le site landing et Création de composant React',
+      task2 : 'Release de la webapp app.molotov.tv',
       task3 : 'Améliorations des performances du site landing et de l\'app',
       task4 : 'Travail en Anglais avec des équipes internationales suite au rachat de Molotov par Fubo'
     }
@@ -43,8 +43,8 @@ const experiences = [
   {
     company: "Les artisans Numériques",
     yearStarted: 2019,
-    imgSrc: process.env.PUBLIC_URL + '/logo-artnum-V1.png',
-    jobTitle: "Développeur de solutions informatiques pour le Plateau commun de Paris Nord",
+    imgSrc: process.env.PUBLIC_URL + '/logo-artnum.png',
+    jobTitle: "Stage en tant que Développeur front-end",
     description: "Développeur Front-End",
     task : {
       task1 : 'Réalisation de pages pour le site Coallia.org via Wordpress',
