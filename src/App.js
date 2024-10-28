@@ -43,7 +43,7 @@ const experiences = [
   {
     company: "Les artisans Numériques",
     yearStarted: 2019,
-    imgSrc: process.env.PUBLIC_URL + '/logo-artnum_V1.png',
+    imgSrc: process.env.PUBLIC_URL + '/logo-artnum-V1.png',
     jobTitle: "Développeur de solutions informatiques pour le Plateau commun de Paris Nord",
     description: "Développeur Front-End",
     task : {
