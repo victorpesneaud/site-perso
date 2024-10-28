@@ -7,8 +7,8 @@ function Header() {
         <div className='header'>
             <img src={process.env.PUBLIC_URL + '/Screenshot_289.png'} alt="moi" className='portrait'/>
             <div>
-              <a href='https://github.com'><img src={process.env.PUBLIC_URL + '/github-brands-solid.svg'} alt=''/></a>
-              <a href='https://www.linkedin.com'><img src={process.env.PUBLIC_URL + '/linkedin-brands-solid.svg'} alt=''/></a>
+              <a href='https://github.com/victorpesneaud'><img src={process.env.PUBLIC_URL + '/github-brands-solid.svg'} alt=''/></a>
+              <a href='https://www.linkedin.com/in/victor-pesneaud-5875661b7/'><img src={process.env.PUBLIC_URL + '/linkedin-brands-solid.svg'} alt=''/></a>
               <a href='mailto:vpesneaud@gmail.com'><img src={process.env.PUBLIC_URL + '/envelope-solid.svg'} alt=''/></a>
             </div>
         </div>
