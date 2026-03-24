@@ -13,8 +13,8 @@ function Header() {
             </div>
         </div>
         <div>
-            <h1 className='à-propos'>Victor Pesneaud - Développeur Front-End</h1>
-            <p>Jeune développeur Front bilingue anglais avec deux ans d’expérience professionnelle dans le developpement en recherche d'un contrat d’apprentissage pour la dernière année d’un Mastère de Développement Web à l’école ECV Digital Paris de 2024 à 2025</p>
+            <h1 className='à-propos'>Victor Pesneaud - Développeur Web Full-Stack</h1>
+            <p>Jeune développeur Fullstack bilingue anglais avec plus de trois ans d’expérience professionnelle dans le developpement web en recherche d'un contrat de travail pour la suite de ma carrière</p>
         </div>
       </section>
     );

@@ -4,6 +4,20 @@ import './App.css';
 
 const experiences = [
   {
+    company: "CorText",
+    yearStarted: 2025,
+    imgSrc: process.env.PUBLIC_URL + '/logo-cortext.png', 
+    jobTitle: "Développeur VueJS Full-Stack",
+    description: "Développement d'une application web de visualisation de données liée à l'adaptation au changement climatique pour l'entreprise CorText",
+    task : {
+      task1 : 'Conception de maquettes UI/UX',
+      task2 : 'Création et tenue d\'un cahier des charges en relation avec le client',
+      task3 : 'Création et maintient d\'image docker et de dépots GIT pour le projet',
+      task4 : 'Développement de l\'interface web de navigation dans les données et dans les résultats',
+      task5 : 'Livraison d\'un premier prototype fonctionnel en 6 mois'
+    }
+  },
+  {
     company: "SNCF",
     yearStarted: 2024,
     imgSrc: process.env.PUBLIC_URL + '/logo-sncf3.png', 
@@ -11,8 +25,8 @@ const experiences = [
     description: "Développement de solution Informatiques au sein du plateau commun Paris-Nord du groupe SNCF en VBA, Pyhton et PostGreSQL",
     task : {
       task1 : 'Concertation avec les acteurs et réalisation d’un cahier des charges',
-      task2 : 'automatisation de récupération de données et de calculs en Python/SQL',
-      task3 : ' développement de macro en VBA'
+      task2 : 'Automatisation de récupération de données et de calculs en Python/SQL',
+      task3 : 'Développement de macro en VBA'
     }
   },
   {
@@ -57,10 +71,10 @@ const experiences = [
 const formation = [
   {
     ecole: "ECV Digital",
-    yearStarted: "2023 - Présent",
+    yearStarted: "2023 - 2025",
     imgSrc: process.env.PUBLIC_URL + '/logo-ecv-digital.png', 
-    jobTitle: "Mastère Lead Developer Front-End",
-    description: "Actuellement en 2ème année de mon cursus en Mastère Lead Developer Front End",
+    jobTitle: "Mastère Lead Developer Front-End + Manager de l'ingénierie digitale",
+    description: "Obtention du Mastère Lead Developer Front End + Manager de l'ingénierie digitale (RNCP38590)",
     task : {
       task1 : 'L\'analyse de l\'environnement et des besoins digitaux d\'une entité cliente',
       task2 : 'L\'élaboration de projet digitaux au service d\'une entité cliente',
@@ -87,7 +101,7 @@ const ComponentA = () => {
   return <div className='component-container'>
   {experiences.map((experience, index) => (
     <div key={index} className='card-container'>
-      <div className='card-header'><img src={experience.imgSrc} alt={experience.company}/><h1>{experience.company} ({experience.yearStarted})</h1></div>
+      <div className='card-header'><img src={experience.imgSrc} alt={experience.company} className='company-logo'/><h1>{experience.company} ({experience.yearStarted})</h1></div>
       <h2>{experience.jobTitle}</h2>
       <p>{experience.description}</p>
       <div style={{ marginTop: '10px' }}>
@@ -107,7 +121,7 @@ const ComponentB = () => {
   return <div className='component-container'>
   {formation.map((formation, index) => (
     <div key={index} className='card-container'>
-      <div className='card-header'><img src={formation.imgSrc} alt={formation.company}/><h1>{formation.company} ({formation.yearStarted})</h1></div>
+      <div className='card-header'><img src={formation.imgSrc} alt={formation.company} className='company-logo'/><h1>{formation.company} ({formation.yearStarted})</h1></div>
       <h2>{formation.jobTitle}</h2>
       <p>{formation.description}</p>
       <div style={{ marginTop: '10px' }}>
@@ -124,7 +138,17 @@ const ComponentB = () => {
 };
 
 const ComponentC = () => {
-  return <div><h1>Cette section est encore en développement, un lien github est disponible en dessous de ma photo via le premier pictogramme </h1></div>;
+  return <div className='component-container'>
+    <div className='card-container'>
+      <p>En cours de mise à jour</p>
+      {/* <h1>Lien entre le site et la web app de Molotov</h1>
+      <p>Après avoir participé au développement et au lancement de la webapp <a href='https://app.molotov.tv'>molotov</a>, l'objectif de ce projet était de relié la partie Programme TV
+      du site vitrine aux programmes disponible uniquement en streaming sur la webapp</p>
+      <img src={process.env.PUBLIC_URL + '/capture-molotov1.png'} className='projet-molotov-img' alt=''/>
+      <p>En appuyant sur le bouton "Regarder Maintenant" l'utilisateur se retrouve face au programme </p>
+      <img src={process.env.PUBLIC_URL + '/capture-molotov2.png'} className='projet-molotov-img' alt=''/> */}
+    </div>
+  </div>;
 };
 
 const App = () => {
