@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-
 
 const experiences = [
   {
@@ -15,7 +14,8 @@ const experiences = [
       task3 : 'Création et maintient d\'image docker et de dépots GIT pour le projet',
       task4 : 'Développement de l\'interface web de navigation dans les données et dans les résultats',
       task5 : 'Livraison d\'un premier prototype fonctionnel en 6 mois'
-    }
+    },
+    skills : ["VueJS", "PiniaJS", "Bootstrap", "GIT", "Docker", "UX", "UI", "Figma", "Relation client", "Cahier des charges"]
   },
   {
     company: "SNCF",
@@ -27,7 +27,8 @@ const experiences = [
       task1 : 'Concertation avec les acteurs et réalisation d’un cahier des charges',
       task2 : 'Automatisation de récupération de données et de calculs en Python/SQL',
       task3 : 'Développement de macro en VBA'
-    }
+    },
+    skills : ["VBA", "Python", "Pandas", "PostgreSQL","PowerBI", "Data Visualisation"]
   },
   {
     company: "Rommus",
@@ -39,7 +40,8 @@ const experiences = [
       task1 : 'Réalisatisation de pages et implémentation de features pour le système de tracking interne de coli',
       task2 : 'Gestions de flux via Data Exchange Orchestrator',
       task3 : 'résolution de problèmes  informatiques divers et variés pour les nombreux employés de l’entreprise '
-    }
+    },
+    skills : ["PHP", "Symfony", "Twig", "Javascript", "IT", "DexOP", "SQL", "Agile"]
   },
   {
     company: "Molotov (Puis Fubo TV)",
@@ -52,7 +54,8 @@ const experiences = [
       task2 : 'Release de la webapp app.molotov.tv',
       task3 : 'Améliorations des performances du site landing et de l\'app',
       task4 : 'Travail en Anglais avec des équipes internationales suite au rachat de Molotov par Fubo'
-    }
+    },
+    skills : ["ReactJS", "Redux", "l18n", "Agile", "Lighthouse", "Storybook", "B2C", "Scrum", "Electron", "English"]
   },
   {
     company: "Les artisans Numériques",
@@ -64,7 +67,8 @@ const experiences = [
       task1 : 'Réalisation de pages pour le site Coallia.org via Wordpress',
       task2 : 'Réalisation de maquettes et de prototypes pour le site Luxe.tv',
       task3 : 'Gestion des Administrateurs pour Coallia'
-    }
+    },
+    skills : ["Javascript", "PHP", "UX", "Wordpress"]
   }
 ];
 
@@ -97,83 +101,256 @@ const formation = [
   },
 ];
 
-const ComponentA = () => {
-  return <div className='component-container'>
-  {experiences.map((experience, index) => (
-    <div key={index} className='card-container'>
-      <div className='card-header'><img src={experience.imgSrc} alt={experience.company} className='company-logo'/><h1>{experience.company} ({experience.yearStarted})</h1></div>
-      <h2>{experience.jobTitle}</h2>
-      <p>{experience.description}</p>
-      <div style={{ marginTop: '10px' }}>
-            <h3>Tâches principales effectuées :</h3>
-            <ul>
-              {Object.values(experience.task).map((task, i) => (
-                <li key={i}>{task}</li>
-              ))}
-            </ul>
-          </div>
-    </div>
-  ))}
-</div>;
-};
-
-const ComponentB = () => {
-  return <div className='component-container'>
-  {formation.map((formation, index) => (
-    <div key={index} className='card-container'>
-      <div className='card-header'><img src={formation.imgSrc} alt={formation.company} className='company-logo'/><h1>{formation.company} ({formation.yearStarted})</h1></div>
-      <h2>{formation.jobTitle}</h2>
-      <p>{formation.description}</p>
-      <div style={{ marginTop: '10px' }}>
-            <h3>L'école définit 4 grands axes à ce cursus :</h3>
-            <ul>
-              {Object.values(formation.task).map((task, i) => (
-                <li key={i}>{task}</li>
-              ))}
-            </ul>
-          </div>
-    </div>
-  ))}
-</div>;
-};
-
-const ComponentC = () => {
-  return <div className='component-container'>
-    <div className='card-container'>
-      <p>En cours de mise à jour</p>
-      {/* <h1>Lien entre le site et la web app de Molotov</h1>
-      <p>Après avoir participé au développement et au lancement de la webapp <a href='https://app.molotov.tv'>molotov</a>, l'objectif de ce projet était de relié la partie Programme TV
-      du site vitrine aux programmes disponible uniquement en streaming sur la webapp</p>
-      <img src={process.env.PUBLIC_URL + '/capture-molotov1.png'} className='projet-molotov-img' alt=''/>
-      <p>En appuyant sur le bouton "Regarder Maintenant" l'utilisateur se retrouve face au programme </p>
-      <img src={process.env.PUBLIC_URL + '/capture-molotov2.png'} className='projet-molotov-img' alt=''/> */}
-    </div>
-  </div>;
-};
+const projets = [
+  {
+    name: "FM-Moneyball",
+    description: "Un outil d'analyse de données pour Football Manager qui identifie les joueurs sous-évalués à l'aide de statistiques avancées — inspiré de la philosophie de « Moneyball ».",
+    stack: ["NextJS", "React", "Typescript"],
+    url: "https://github.com/victorpesneaud/fm-moneyball",
+  },
+  {
+    name: "Spotifind",
+    description: "Plateforme de notation et de reccomendation de musique (à la Letterboxd) - projet d'école ».",
+    stack: ["VueJS", "Pinia", "MongoDB", "API Rest"],
+    url: "https://github.com/victorpesneaud/PFE-Spotify",
+  },
+  {
+    name: "JobScraper",
+    description: "Outil permettant de récupérer les annonces de postes disponnibles sur les job boards les plus connus en se basant sur les intitulés de postes pertinents ».",
+    stack: ["Python"],
+    url: "https://github.com/victorpesneaud/fm-moneyball",
+  }
+]
 
 const App = () => {
-  // traque le State actuel
-  const [currentComponent, setCurrentComponent] = useState('A');
+  const [activeSection, setActiveSection] = useState('accueil');
 
-  // retourne le nom de classe active si la variable currentComponent du State est = à 
+  useEffect(() => {
+    const sections = ['accueil', 'projets', 'experiences', 'contact'];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.8, 
+      }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className='nav-container'>
-      <nav>
-        <button onClick={() => setCurrentComponent('A')} className={currentComponent === 'A' ? 'active' : ''}>
-          Expérience Professionnelle
-        </button>
-        <button onClick={() => setCurrentComponent('B')} className={currentComponent === 'B' ? 'active' : ''}>
-          Formation
-        </button>
-        <button onClick={() => setCurrentComponent('C')} className={currentComponent === 'C' ? 'active' : ''}>
-          Mes Projets
-        </button>
-      </nav>
+      <nav className='navbar-header'>
+          <div className='navbar-brand'>
+            <div className='navbar-avatar'>VP</div>
+            <div className='navbar-brand-text'>
+              <span className='navbar-name'>Victor Pesneaud</span>
+              <span className='navbar-subtitle'>Développeur</span>
+            </div>
+          </div>
+          <ul className='navbar-links'>
+            <a href='#accueil'><li className={activeSection === 'accueil' ? 'active' : ''}>Accueil</li></a>
+            <a href='#projets'><li className={activeSection === 'projets' ? 'active' : ''}>Projets</li></a>
+            <a href='#experiences'><li className={activeSection === 'experiences' ? 'active' : ''}>Expériences Professionnelles</li></a>
+            <a href='#contact'><li className={activeSection === 'contact' ? 'active' : ''}>Contact</li></a>
+          </ul>
+          <div className='navbar-right'>
+            <div className='navbar-icons'>
+              <a href='https://github.com/victorpesneaud'>
+                <img src={process.env.PUBLIC_URL + '/github-brands-solid.svg'} alt='GitHub' />
+              </a>
+              <a href='https://www.linkedin.com/in/victor-pesneaud-5875661b7/'>
+                <img src={process.env.PUBLIC_URL + '/linkedin-brands-solid.svg'} alt='LinkedIn' />
+              </a>
+            </div>
+            <a href='mailto:vpesneaud@gmail.com' className='navbar-cta'>
+              Me contacter →
+            </a>
+          </div>
+        </nav>
+        <div className='header' id="accueil">
+          <div className='portrait-wrapper'>
+            <img src={process.env.PUBLIC_URL + '/Screenshot_289.png'} alt="moi" className='portrait'/>
+          </div>
+        </div>
 
-      {/* render le composant selon la valeur de currentComponent */}
-      {currentComponent === 'A' && <ComponentA />}
-      {currentComponent === 'B' && <ComponentB />}
-      {currentComponent === 'C' && <ComponentC />}
+        <div className='header-text'>
+          <h1 className='header-name'>Victor Pesneaud</h1>
+          <p className='header-role'>Développeur Web Full-Stack</p>
+        </div>
+
+        <div className='header-icons-container'>
+          <a href='https://github.com/victorpesneaud' className='header-icon-link'>
+            <img src={process.env.PUBLIC_URL + '/github-brands-solid.svg'} alt='GitHub' className='icons'/>
+          </a>
+          <a href='https://www.linkedin.com/in/victor-pesneaud-5875661b7/' className='header-icon-link'>
+            <img src={process.env.PUBLIC_URL + '/linkedin-brands-solid.svg'} alt='LinkedIn' className='icons'/>
+          </a>
+          <a href='mailto:vpesneaud@gmail.com' className='header-icon-link'>
+            <img src={process.env.PUBLIC_URL + '/envelope-solid.svg'} alt='Email' className='icons'/>
+          </a>
+        </div>
+        <p className='header-role'>Ma Stack :</p>
+        <div className="skills-grid">
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/react.svg'} alt="" />
+            <span>React</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/typescript.svg'} alt="" />
+            <span>TypeScript</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/javascript.svg'} alt="" />
+            <span>Javascript</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/vue.svg'} alt="" />
+            <span>VueJS</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/nodejs.svg'} alt="" />
+            <span>Node.js</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/python.svg'} alt="" />
+            <span>Python</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/redux.svg'} alt="" />
+            <span>Redux</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/docker.svg'} alt="" />
+            <span>Docker</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/pinia.svg'} alt="" />
+            <span>PiniaJS</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/postgresql.svg'} alt="" />
+            <span>PostgreSQL</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/github-brands-solid.svg'} alt="" />
+            <span>Git</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/nextjs.svg'} alt="" />
+            <span>Next.js</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/html.svg'} alt="" />
+            <span>HTML</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/css.svg'} alt="" />
+            <span>CSS</span>
+          </div>
+          <div className="skill-card">
+            <img src={process.env.PUBLIC_URL + '/pandas.svg'} alt="" />
+            <span>Pandas</span>
+          </div>
+        </div>
+      <h1 className='section-title'>Projets personnels</h1>
+      <span className='underline-section-title'></span>
+      <div id="projets">
+        {projets.map((projet, index) => (
+          <div key={index} className='projets-container'>
+            <a href={projet.url}><h2>{index + 1}. {projet.name}</h2></a>
+            <p>{projet.description}</p>
+            <ul className='project-list-container'>
+              {Object.values(projet.stack).map((skill, i) => (
+                      <li key={i}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <h1>Expériences Professionnelles</h1>
+      <span className='underline-section-title'></span>
+      <div className='component-container'>
+        {experiences.map((experience, index) => (
+          <div key={index} className='card-container' id="experiences">
+            <div className='card-header'><img src={experience.imgSrc} alt={experience.company} className='company-logo'/><h1>{experience.company} ({experience.yearStarted})</h1></div>
+            <h2>{experience.jobTitle}</h2>
+            <p>{experience.description}</p>
+            <div style={{ marginTop: '10px' }}>
+                  <h3>Tâches principales effectuées :</h3>
+                  <ul>
+                    {Object.values(experience.task).map((task, i) => (
+                      <li key={i}>{task}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className='skills-grid-job'>
+                    {Object.values(experience.skills).map((task, i) => (
+                      <div className='skill-card'>
+                      <li key={i}>{task}</li>
+                      </div>
+                    ))}
+                </div>
+          </div>
+        ))}
+      </div>
+      <h1>Formations</h1>
+      <span className='underline-section-title'></span>
+      <div className='component-container'>
+      {formation.map((formation, index) => (
+        <div key={index} className='card-container'>
+          <div className='card-header'><img src={formation.imgSrc} alt={formation.company} className='company-logo'/><h1>{formation.company} ({formation.yearStarted})</h1></div>
+          <h2>{formation.jobTitle}</h2>
+          <p>{formation.description}</p>
+          <div style={{ marginTop: '10px' }}>
+                <h3>L'école définit 4 grands axes à ce cursus :</h3>
+                <ul>
+                  {Object.values(formation.task).map((task, i) => (
+                    <li key={i}>{task}</li>
+                  ))}
+                </ul>
+              </div>
+        </div>
+      ))}
+    </div>
+    <h1 id="contact">Me contacter</h1>
+    <span className='underline-section-title'></span>
+    <div className='contacts-cards-container'>
+      <a href='mailto:vpesneaud@gmail.com' className='contacts-card-link'>
+        <div className='contacts-card'>
+          <img src={process.env.PUBLIC_URL + '/envelope-solid.svg'} alt="" />
+          <div>
+            <p className='navbar-subtitle'>Email</p>
+            <h2>vpesneaud@gmail.com</h2>
+          </div>
+        </div>
+      </a>
+      <a href='https://github.com/victorpesneaud' target='_blank' rel='noreferrer' className='contacts-card-link'>
+        <div className='contacts-card'>
+          <img src={process.env.PUBLIC_URL + '/github-brands-solid.svg'} alt="" />
+          <p className='navbar-subtitle'>Github</p>
+          <h2>victorpesneaud</h2>
+        </div>
+      </a>
+      <a href='https://www.linkedin.com/in/victor-pesneaud-5875661b7/' target='_blank' rel='noreferrer' className='contacts-card-link'>
+        <div className='contacts-card'>
+          <img src={process.env.PUBLIC_URL + '/linkedin-brands-solid.svg'} alt="" />
+          <p className='navbar-subtitle'>Linkedin</p>
+          <h2>Victor Pesneaud</h2>
+        </div>
+      </a>
+    </div>
     </div>
   );
 };
