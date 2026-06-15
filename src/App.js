@@ -117,21 +117,28 @@ const formation = [
 const projets = [
   {
     name: "FM-Moneyball",
-    description: "Un outil d'analyse de données pour Football Manager qui identifie les joueurs sous-évalués à l'aide de statistiques avancées — inspiré de la philosophie de « Moneyball ».",
+    description: "Un outil d'analyse de données pour Football Manager qui identifie les joueurs sous-évalués à l'aide de statistiques avancées — inspiré de la philosophie de « Moneyball.",
     stack: ["NextJS", "React", "Typescript"],
     url: "https://github.com/victorpesneaud/fm-moneyball",
   },
   {
     name: "Spotifind",
-    description: "Plateforme de notation et de reccomendation de musique (à la Letterboxd) - projet d'école ».",
+    description: "Plateforme de notation et de reccomendation de musique (à la Letterboxd) - projet d'école.",
     stack: ["VueJS", "Pinia", "MongoDB", "API Rest"],
     url: "https://github.com/victorpesneaud/PFE-Spotify",
   },
   {
     name: "JobScraper",
-    description: "Outil permettant de récupérer les annonces de postes disponnibles sur les job boards les plus connus en se basant sur les intitulés de postes pertinents ».",
+    description: "Outil permettant de récupérer les annonces de postes disponnibles sur les job boards les plus connus en se basant sur les intitulés de postes pertinents.",
     stack: ["Python"],
     url: "https://github.com/victorpesneaud/fm-moneyball",
+  },
+  {
+    name: "Création d'affiches",
+    description: "Affiches réalisé pour l'université du pays basque et l'université Gustave eiffel dans le cadre d'une journée d'étude.",
+    stack: ["InDesign, Photoshop"],
+    imgSrc: process.env.PUBLIC_URL + '/affiche resistir fracturar inventar 4-1.png',
+    url: "https://lisaa.univ-gustave-eiffel.fr/actualites/actualite/je-resistir-fracturar-inventar-formas-de-la-contestacion-en-america-latina-y-la-peninsula-iberica-siglos-xx-xxi",
   }
 ]
 
@@ -284,6 +291,8 @@ const App = () => {
           <div key={index} className='projets-container'>
             <a href={projet.url}><h2>{index + 1}. {projet.name}</h2></a>
             <p>{projet.description}</p>
+            <img src={projet.imgSrc} className='company-logo'></img>
+
             <ul className='project-list-container'>
               {Object.values(projet.stack).map((skill, i) => (
                       <li key={i}>{skill}</li>
