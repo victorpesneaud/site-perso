@@ -3,6 +3,19 @@ import './App.css';
 
 const experiences = [
   {
+    company: "Université Gustave Eiffel",
+    yearStarted: 2026,
+    imgSrc: process.env.PUBLIC_URL + '/logo-lisaa.png', 
+    jobTitle: "Concepteur Redacteur Web",
+    description: "Création de site web, de contenu web et d'outils de communication pour le LISAA",
+    task : {
+      task1 : 'Conception du site web du LISAA édition',
+      task2 : 'Rédaction de contenu pour le site web du LISAA',
+      task3 : 'Création d\'outil de communication pour le LISAA',
+    },
+    skills : ["Wordpress", "Photoshop", "inDesign"]
+  },
+  {
     company: "CorText",
     yearStarted: 2025,
     imgSrc: process.env.PUBLIC_URL + '/logo-cortext.png', 
@@ -31,7 +44,7 @@ const experiences = [
     skills : ["VBA", "Python", "Pandas", "PostgreSQL","PowerBI", "Data Visualisation"]
   },
   {
-    company: "Rommus",
+    company: "Romus",
     yearStarted: "2023 - 2024",
     imgSrc: process.env.PUBLIC_URL + '/logo-romus.png',
     jobTitle: "Etude et Développement Service Informatique",
